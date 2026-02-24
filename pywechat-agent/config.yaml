@@ -1,0 +1,11 @@
+logger:
+  level: DEBUG
+  filename: pywechat-agent.log
+
+nats_url: nats://localhost:4222
+poll_interval: 0.5
+window_minimize: true
+
+chat_transfer_config:
+  - chat: "文件传输助手"
+    subject: "wxauto.messages"

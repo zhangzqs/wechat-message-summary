@@ -1,0 +1,21 @@
+[project]
+name = "pywechat-agent"
+version = "0.1.0"
+description = "pyweixin 4.1+ message listener → NATS JetStream publisher"
+requires-python = ">=3.13"
+dependencies = [
+    "nats-py>=2.10.0",
+    "pydantic>=2.11.0",
+    "python-json-logger>=3.3.0",
+    "pyyaml>=6.0.2",
+    "pywinauto>=0.6.8",
+    "pyautogui>=0.9.54",
+    "pywin32>=310",
+    "comtypes>=1.4.0",
+]
+
+[tool.uv]
+index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[project.scripts]
+pywechat-agent = "main:main"
