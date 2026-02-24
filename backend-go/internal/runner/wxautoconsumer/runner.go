@@ -67,21 +67,14 @@ func (r *Runner) handleMessage(ctx context.Context, msg *nats.Msg) natsconsumer.
 
 // convertToEntity 将 ReceivedMessage 转换为 MessageEntity
 func convertToEntity(msg *wxauto.ReceivedMessage) *db.MessageEntity {
-	entity := &db.MessageEntity{
+	return &db.MessageEntity{
 		ID:           msg.ID,
 		Type:         msg.Type,
 		Attr:         msg.Attr,
 		Content:      msg.Content,
 		Sender:       msg.Sender,
 		SenderRemark: msg.SenderRemark,
-		ChatType:     msg.Info.ChatType,
-		ChatName:     msg.Info.ChatName,
+		ChatType:     msg.ChatType,
+		ChatName:     msg.ChatName,
 	}
-
-	if msg.Info.GroupInfo != nil {
-		count := msg.Info.GroupInfo.GroupMemberCount
-		entity.GroupMemberCount = &count
-	}
-
-	return entity
 }

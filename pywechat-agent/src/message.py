@@ -85,8 +85,6 @@ def build_payload(
         "content": content,
         "sender": sender,
         "sender_remark": "",
-        "info": {
-            "chat_type": "group",
-            "chat_name": chat_name,
-        },
+        "chat_type": "group",
+        "chat_name": chat_name,
     }
