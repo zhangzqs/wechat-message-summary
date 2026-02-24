@@ -1,0 +1,18 @@
+logger:
+  log_console: true
+  level: debug
+
+database:
+  driver: postgres
+  dsn: "host=postgres user=wechat password=wechat dbname=wechat_messages port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+
+wxautoconsumer:
+  consumer:
+    nats_url: "nats://nats:4222"
+    subject: "wxauto.messages"
+    consumer_name: "wxautoconsumer"
+    concurrency: 2
+    pull_max_wait: 1s
+
+mcpserver:
+  addr: ":8080"
