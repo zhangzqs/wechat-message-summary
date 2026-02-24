@@ -15,7 +15,6 @@ import logging
 import sys
 import threading
 import time
-from pathlib import Path
 
 import nats
 from nats.js import JetStreamContext
@@ -26,16 +25,6 @@ from message import build_payload
 
 logger = logging.getLogger("pywechat-agent")
 
-
-def _ensure_pyweixin_importable() -> None:
-    """确保 vendor/pywechat/pyweixin 在 sys.path 中，使 pyweixin 可导入。
-
-    pyweixin 未发布到 PyPI，需要通过 git submodule 或直接拷贝到 vendor/ 目录。
-    """
-    vendor_path = Path(__file__).resolve().parent.parent / "vendor" / "pywechat"
-    if vendor_path.is_dir() and str(vendor_path) not in sys.path:
-        sys.path.insert(0, str(vendor_path))
-        logger.debug("已将 pyweixin 路径加入 sys.path: %s", vendor_path)
 
 
 def _run_event_loop(loop: asyncio.AbstractEventLoop) -> None:
@@ -161,7 +150,6 @@ def main() -> None:
     logger.info("NATS JetStream 连接成功")
 
     # --- pyweixin 初始化（延迟导入，仅 Windows 可用）---
-    _ensure_pyweixin_importable()
     try:
         from pyweixin import Navigator  # type: ignore[import-untyped]
         from pyweixin.Uielements import Lists  # type: ignore[import-untyped]
