@@ -1,0 +1,18 @@
+logger:
+  log_console: true
+  level: debug
+
+database:
+  driver: sqlite # 或 postgres
+  dsn: "messages.db" # SQLite 路径，或 PostgreSQL 连接串
+
+wxautoconsumer:
+  consumer:
+    nats_url: "nats://localhost:4222"
+    subject: "wxauto.messages"
+    consumer_name: "wxautoconsumer"
+    concurrency: 2
+    pull_max_wait: 1s
+
+mcpserver:
+  addr: ":8080"
