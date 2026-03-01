@@ -1,0 +1,21 @@
+[project]
+name = "ocr-wechat-agent"
+version = "0.1.0"
+description = "WeChat 4.x OCR-based message monitor → NATS JetStream publisher"
+requires-python = ">=3.13"
+dependencies = [
+    "nats-py>=2.10.0",
+    "pydantic>=2.11.0",
+    "python-json-logger>=3.3.0",
+    "pyyaml>=6.0.2",
+    "Pillow>=11.0.0",
+    "pywin32>=308",
+    "psutil>=6.0.0",
+    "winsdk>=1.0.0b10",
+]
+
+[tool.uv]
+index-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+
+[project.scripts]
+ocr-wechat-agent = "main:main"
