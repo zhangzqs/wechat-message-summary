@@ -1,9 +1,0 @@
-logger:
-  level: DEBUG
-  filename: wechat-agent.log
-
-nats_url: nats://localhost:4222
-
-chat_transfer_config:
-  - chat: "文件传输助手"
-    subject: "wxauto.messages"
